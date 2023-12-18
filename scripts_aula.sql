@@ -103,6 +103,11 @@ select distinct i_cliente_cliente from venda;
 select max(c.i_cliente_cliente)+1 as 
 i_cliente_cliente from cliente c;
 
+SELECT MAX(i_cliente_cliente) + 1 FROM cliente; 
+/*o nome seria o resultado de max,
+mas antes era uma coluna própria de 'c', agora vem da coluna direta de cliente
+ */
+
 insert into cliente values( 
 (select max(c.i_cliente_cliente)+1 as i_cliente_cliente from cliente c),
 "joao",
@@ -130,3 +135,34 @@ create view nomescli as
  from cliente;
 
 /* aula 17 */
+
+select  i_cliente_cliente, s_cpf_cliente from cliente;
+
+create view cpfcliente as 
+select i_cliente_cliente, s_cpf_cliente from cliente;
+select * from cpfcliente;
+
+select i_cliente_cliente, s_nome_cliente,
+ day(d_nasc_cliente) as "aniversário cliente"
+from cliente
+where month(d_nasc_cliente) = month(curdate());
+
+select i_cliente_cliente, s_nome_cliente,
+ day(d_nasc_cliente) as "aniversário cliente"
+from cliente
+where month(d_nasc_cliente) = 2;
+
+select i_cliente_cliente, s_nome_cliente,
+ day(d_nasc_cliente) as "aniversário cliente"
+from cliente
+where month(d_nasc_cliente) in(2,3,4);
+
+create view anivesariantesMes as
+select i_cliente_cliente, s_nome_cliente,
+ day(d_nasc_cliente) as "aniversário cliente"
+from cliente
+where month(d_nasc_cliente) = month(curdate());
+
+select * from anivesariantesmes;
+
+/*aula 18 */
