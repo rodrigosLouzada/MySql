@@ -166,3 +166,17 @@ where month(d_nasc_cliente) = month(curdate());
 select * from anivesariantesmes;
 
 /*aula 18 */
+select * from cliente 
+where 
+s_cpf_cliente = "12345678999" OR
+ s_cpf_cliente = "00000000001";
+ 
+select * from cliente
+where
+ s_cpf_cliente in(2,3) and
+ i_tipo_cliente != 1 and
+ month(d_nasc_cliente) > 2;
+ 
+ select * from cliente
+ where i_tipo_cliente in(2,3) and
+ (month(d_nasc_cliente) >=4 and month(d_nasc_cliente) <= 9);
