@@ -180,3 +180,38 @@ where
  select * from cliente
  where i_tipo_cliente in(2,3) and
  (month(d_nasc_cliente) >=4 and month(d_nasc_cliente) <= 9);
+
+ /*aula 19 */
+
+select * from cliente;
+select * from tipocliente;
+
+select i_cliente_cliente,
+	s_nome_cliente,
+	s_cpf_cliente,
+	d_nasc_cliente,
+	i_tipo_cliente
+from cliente
+	inner join tipocliente on 
+    i_tipo_cliente = i_tipocliente_tipocliente;
+    
+select i_cliente_cliente,
+	c.s_nome_cliente,
+	c.s_cpf_cliente,
+	c.d_nasc_cliente,
+	tc.s_dsctipocliente_tipocliente
+from cliente c
+	inner join tipocliente tc on 
+    c.i_tipo_cliente = tc.i_tipocliente_tipocliente;
+
+select 
+	v.i_venda_venda,
+    c.s_nome_cliente,
+    c.s_cpf_cliente,
+    v.d_data_venda,
+    v.f_valor_venda,
+    tc.s_dsctipocliente_tipocliente
+ from venda v
+	inner join cliente c on v.i_cliente_cliente = c.i_cliente_cliente
+    inner join tipocliente tc on c.i_tipo_cliente = tc.i_tipocliente_tipocliente;
+ 
