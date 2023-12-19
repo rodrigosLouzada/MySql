@@ -214,4 +214,49 @@ select
  from venda v
 	inner join cliente c on v.i_cliente_cliente = c.i_cliente_cliente
     inner join tipocliente tc on c.i_tipo_cliente = tc.i_tipocliente_tipocliente;
+
+
+ /*aula 20 */
+ 
+ select 
+ s_nome_cliente 
+ from cliente 
+ group by s_nome_cliente;
+ 
+ select 
+ count(i_cliente_cliente) as Qtde
+ from cliente 
+ group by i_tipo_cliente;
+
+select i_tipo_cliente from cliente; 
+
+select 
+i_tipo_cliente
+from cliente 
+group by i_tipo_cliente;
+
+select 
+	i_tipo_cliente, 
+	count(i_cliente_cliente) as Qtde
+ from 
+	cliente 
+ group by i_tipo_cliente;
+ 
+ select 
+	tc.s_dsctipocliente_tipocliente, 
+	count(c.i_cliente_cliente) as Qtde
+ from 
+	cliente c
+    inner join 
+    tipocliente tc on tc.i_tipocliente_tipocliente = c.i_tipo_cliente
+ group by c.i_tipo_cliente;
+ 
+ select * from venda;
+ 
+ select d_data_venda from venda
+ group by d_data_venda;
+ 
+  select count(v.i_venda_venda) as "qtds de vendas do dia"
+  from venda v
+ group by d_data_venda;
  
