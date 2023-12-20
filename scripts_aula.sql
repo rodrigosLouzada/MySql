@@ -338,3 +338,24 @@ where d_nasc_cliente IS NULL;
 
 select * from cliente 
 where d_ IS NOT NULL;
+
+/* aula 24 */
+
+select * from cliente 
+where d_nasc_cliente IS NOT NULL AND i_tipo_cliente = 1;
+
+select * from cliente 
+where d_nasc_cliente IS NULL OR i_tipo_cliente = 1;
+
+select * from cliente 
+where
+	NOT i_tipo_cliente = 1;
+    
+select * from cliente 
+where 
+	NOT i_tipo_cliente = 1 AND NOT i_tipo_cliente = 2;
+    
+select * from cliente
+where 
+	(NOT i_tipo_cliente != 1 AND i_tipo_cliente != 2) 
+    AND d_nasc_cliente IS NOT NULL;
