@@ -314,4 +314,27 @@ select *
 		cliente 
     order by 
 		right(s_cpf_cliente,3);
- 
+
+
+/* aula 23 */
+
+insert into cliente values (15, 'Valkisneide','11223344556',null,1);
+insert into cliente values (16,'Alcinclésio','65544332211',null,2);
+insert into cliente values (17,'Nestisgerson','74125896300',null,3);
+insert into cliente values (18,'Mordonório','36925814799',null,1);
+insert into cliente values (19,'Mordonório','36925814799',null,2);
+insert into cliente values (20,'Salomildo','98765432147',null,3);
+
+update cliente
+set i_cliente_cliente = 12
+where i_cliente_cliente = 20;
+select * from cliente;
+
+select * from cliente
+order by 1 desc;
+
+select * from cliente
+where d_nasc_cliente IS NULL;
+
+select * from cliente 
+where d_ IS NOT NULL;
