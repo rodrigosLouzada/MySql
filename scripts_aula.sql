@@ -216,7 +216,8 @@ select
     inner join tipocliente tc on c.i_tipo_cliente = tc.i_tipocliente_tipocliente;
 
 
- /*aula 20 */
+ /*aula 20  a partir daquele campo que tem os tipos semelhantes agrupados, ele faz uma opereação, 
+ enquanto que o order by alinha todos os tipos sem os agregar ao terem valores semelhantes*/
  
  select 
  s_nome_cliente 
@@ -274,7 +275,8 @@ from venda v
 group by v.d_data_venda 
 having count(v.i_venda_venda) >= 2;
 
-/* aula 22*/
+/* aula 22 a partir daquele campo que tem os tipos semelhantes agrupados, ele faz uma opereação, 
+enquanto que o order by alinha todos os tipos sem os agregar ao terem valores semelhantes*/
 
 select * from cliente order by s_nome_cliente;
 
@@ -359,3 +361,20 @@ select * from cliente
 where 
 	(NOT i_tipo_cliente != 1 AND i_tipo_cliente != 2) 
     AND d_nasc_cliente IS NOT NULL;
+
+ /* aula 25 */
+    
+    select * from cliente limit 5 ;
+    
+    select * from venda 
+    order by f_valor_venda desc limit 3;
+    
+select * 
+from venda v
+inner join cliente c on c.i_cliente_cliente = v.i_cliente_cliente
+order by f_valor_venda desc limit 3;
+
+select c.s_nome_cliente, v.i_venda_venda, v.d_data_venda, v.f_valor_venda
+from venda v
+inner join cliente c on c.i_cliente_cliente = v.i_cliente_cliente
+order by f_valor_venda desc limit 3;
