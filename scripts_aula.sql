@@ -259,4 +259,59 @@ select
   select count(v.i_venda_venda) as "qtds de vendas do dia"
   from venda v
  group by d_data_venda;
+
+ /*aula 21 */
+ 
+select v.d_data_venda,
+count(v.i_venda_venda)  as "qtds de vendas do dia"
+from venda v
+group by v.d_data_venda 
+having d_data_venda > "2020-10-01";
+
+select v.d_data_venda,
+count(v.i_venda_venda)  as "qtds de vendas do dia"
+from venda v
+group by v.d_data_venda 
+having count(v.i_venda_venda) >= 2;
+
+/* aula 22*/
+
+select * from cliente order by s_nome_cliente;
+
+select *
+ from cliente 
+ order by 
+ i_tipo_cliente, s_nome_cliente;
+ 
+ select 
+	*
+ from 
+	cliente 
+ order by 
+	5;
+    
+    select 
+	*
+ from 
+	cliente 
+ order by 
+	2 DESC; 
+    
+    select *
+    from 
+    cliente 
+    order by 5, 2 desc;
+    
+	select 
+		*
+    from 
+		cliente 
+    order by 5 desc, 2 asc;
+    
+    select 
+		* 
+    from 
+		cliente 
+    order by 
+		right(s_cpf_cliente,3);
  
