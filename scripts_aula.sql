@@ -426,3 +426,17 @@ select
 	count(f_valor_venda) as "qtd de vendas",
 	round(sum(f_valor_venda)) as "valor médio das vendas"
 from venda;
+
+/* aula 28 */
+
+select * from cliente
+where s_nome_cliente = "dinho";
+
+select * from cliente 
+where s_nome_cliente like "d%o";
+
+select * from cliente
+where s_nome_cliente like "____o";
+
+select * from cliente
+where s_nome_cliente like "_______";
