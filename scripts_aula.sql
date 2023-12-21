@@ -440,3 +440,26 @@ where s_nome_cliente like "____o";
 
 select * from cliente
 where s_nome_cliente like "_______";
+
+/*aula 29 */
+
+select * from cliente
+where 
+right(s_cpf_cliente, 1) = 0 or right(s_cpf_cliente, 1) = 1;
+
+select * from cliente
+where right(s_cpf_cliente,1) in (0,1);
+
+select * from cliente
+where right(s_cpf_cliente,3) in (000,111);
+
+select d_nasc_cliente from cliente 
+where 
+d_nasc_cliente > "1999-01-01" and d_nasc_cliente < "2022-01-01";
+
+select * from cliente
+where d_nasc_cliente 
+in(
+select d_nasc_cliente from cliente 
+where 
+d_nasc_cliente > "1999-01-01" and d_nasc_cliente < "2022-01-01");
