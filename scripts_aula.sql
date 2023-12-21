@@ -395,3 +395,34 @@ select c.s_nome_cliente, v.i_venda_venda, v.d_data_venda, v.f_valor_venda
 from venda v
 inner join cliente c on c.i_cliente_cliente = v.i_cliente_cliente
 where v.f_valor_venda = (select min(f_valor_venda) from venda);
+
+/* aula 27 */
+
+select * from venda;
+
+select sum(f_valor_venda) from venda;
+select round(sum(f_valor_venda) , 2) from venda;
+
+select round(sum(f_valor_venda) , 2) from venda
+where d_data_venda > "2010-01-01" ;
+
+select round(sum(f_valor_venda), 2) from venda;
+
+select round(avg(f_valor_venda), 2) from venda;
+
+select round(avg(f_valor_venda)) from venda
+where 
+	f_valor_venda > (select min(f_valor_venda) from venda)
+AND
+	f_valor_venda < (select max(f_valor_venda) from venda);
+    
+select round(sum(f_valor_venda)) from venda
+where 
+	f_valor_venda > (select min(f_valor_venda) from venda)
+AND
+	f_valor_venda < (select max(f_valor_venda) from venda);
+    
+select 
+	count(f_valor_venda) as "qtd de vendas",
+	round(sum(f_valor_venda)) as "valor médio das vendas"
+from venda;
