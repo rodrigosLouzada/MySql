@@ -482,3 +482,23 @@ where (d_data_venda between "1998-02-13" and "2019-12-12")
 and i_cliente_cliente not in (2,3)
 and f_valor_venda > 20
 ;
+
+/* aula 31*/
+
+select c.i_cliente_cliente, c.s_nome_cliente 
+from cliente c
+inner join venda v 
+	on c.i_cliente_cliente = v.i_cliente_cliente
+;
+
+select * from venda;
+
+select c.i_cliente_cliente, c.s_nome_cliente, v.i_venda_venda
+from cliente c
+left join venda v 
+	on c.i_cliente_cliente = v.i_cliente_cliente ;
+    
+    select c.i_cliente_cliente, c.s_nome_cliente, v.i_venda_venda
+from cliente c
+right join venda v 
+	on c.i_cliente_cliente = v.i_cliente_cliente ;
