@@ -525,3 +525,24 @@ where
     and c1.s_nome_cliente = "Rodrigo"
 order by 
 	c1.i_tipo_cliente ;
+
+
+/* aula 33 */
+
+select i_cliente_cliente, s_cpf_cliente from cliente;
+select i_cliente_cliente, s_cpf_cliente from cliente_aux;
+
+select i_cliente_cliente, s_cpf_cliente from cliente
+union
+select i_cliente_cliente, s_cpf_cliente from cliente_aux;
+
+select  "Cliente" as Tabela , i_cliente_cliente, s_cpf_cliente from cliente
+union
+select "Cliente aux" , i_cliente_cliente, s_cpf_cliente from cliente_aux;
+
+select  "Cliente" as Tabela , i_cliente_cliente, s_cpf_cliente from cliente
+union
+select "Cliente aux" , i_cliente_cliente, s_cpf_cliente from cliente_aux
+union 
+select "Venda" , v.i_cliente_cliente , c.s_nome_cliente from venda v
+inner join cliente c on v.i_cliente_cliente = c.i_cliente_cliente;
