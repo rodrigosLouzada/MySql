@@ -463,3 +463,22 @@ in(
 select d_nasc_cliente from cliente 
 where 
 d_nasc_cliente > "1999-01-01" and d_nasc_cliente < "2022-01-01");
+
+/*aula 30 */
+
+select * from tabela;
+
+select * from cliente 
+where i_tipo_cliente in (1,2,3);
+
+select * from cliente 
+where i_tipo_cliente between 1 and 3;
+
+select * from cliente
+where d_nasc_cliente between "1998-02-13" and "2019-12-12";
+
+select * from venda 
+where (d_data_venda between "1998-02-13" and "2019-12-12")
+and i_cliente_cliente not in (2,3)
+and f_valor_venda > 20
+;
