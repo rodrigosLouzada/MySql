@@ -564,3 +564,46 @@ where exists
 select * from cliente c
 where exists
 (select * from venda v where v.i_cliente_cliente = c.i_cliente_cliente);
+
+/* aula 35 */
+
+select * from cliente;
+
+select 
+i_cliente_cliente,
+s_nome_cliente,
+s_cpf_cliente,
+case 
+	when d_nasc_cliente is null then now() 
+    when d_nasc_cliente > "2004-01-01" then "maior de idade"
+	when d_nasc_cliente < "2004-01-01" then "menor de idade"
+    else d_nasc_cliente
+end "faixa etaria" ,
+i_tipo_cliente
+ from cliente;
+ 
+ 
+ select 
+i_cliente_cliente,
+s_nome_cliente,
+s_cpf_cliente,
+case 
+	when (datediff(now(), d_nasc_cliente)/365) > 18 then "maior de idade" 
+    else  "menor de idade" 
+    end "faixa etária" ,
+i_tipo_cliente
+ from cliente;
+ 
+ select 
+i_cliente_cliente,
+s_nome_cliente,
+s_cpf_cliente,
+case 
+	when (datediff(now(), d_nasc_cliente)/365) > 18 then "maior de idade" 
+    else  "menor de idade" 
+    end "faixa etária" ,
+case 
+	when i_tipo_cliente  > 3 then "cliente vip"
+    else "cliente comum"
+end "importancia cliente"
+ from cliente;
