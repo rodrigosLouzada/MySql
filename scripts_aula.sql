@@ -546,3 +546,21 @@ select "Cliente aux" , i_cliente_cliente, s_cpf_cliente from cliente_aux
 union 
 select "Venda" , v.i_cliente_cliente , c.s_nome_cliente from venda v
 inner join cliente c on v.i_cliente_cliente = c.i_cliente_cliente;
+
+/* aula 34 */
+select * from produtovenda;
+select * from cliente ;
+select * from venda where i_cliente_cliente = 10;
+
+select * from cliente 
+where exists 
+(select * from venda where i_cliente_cliente = 10);
+
+select * from cliente 
+where exists 
+(select * from venda where i_cliente_cliente = 1);
+
+
+select * from cliente c
+where exists
+(select * from venda v where v.i_cliente_cliente = c.i_cliente_cliente);
