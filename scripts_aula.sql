@@ -673,3 +673,43 @@ CALL texto();
 call textosparamentro();
 CALL texto("precisa de um parametro");
 call multi(4);
+
+
+/* aula 38*/
+
+DELIMITER $$
+create procedure idade (IN idCliente int, OUT idade int)
+BEGIN
+	DECLARE dt datetime;
+	set dt = (select d_nasc_cliente from cliente 
+    where i_cliente_cliente = idCliente);
+
+	set idade = year(now()) - year(dt) ;
+END $$
+DELIMITER ;
+
+select *,i_cliente_cliente from cliente;
+call idade(21, @idadeCliente);
+select @idadeCliente;
+
+
+DELIMITER $$
+create procedure idadeFaixaEtaria (IN idCliente int, OUT idade int, OUT res varchar(20))
+BEGIN
+	DECLARE dt datetime;
+	set dt = (select d_nasc_cliente from cliente 
+    where i_cliente_cliente = idCliente);
+
+	set idade = year(now()) - year(dt) ;
+    
+    IF(idade >= 18) THEN
+		set res = "maior";
+	ELSE 
+		set res = "menor";
+    END IF ;
+END $$
+DELIMITER ;
+
+select *,i_cliente_cliente from cliente;
+call idadeFaixaEtaria(21, @idadeCliente, @resultado);
+select @idadeCliente, @resultado;
