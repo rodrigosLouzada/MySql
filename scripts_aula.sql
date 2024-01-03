@@ -618,3 +618,58 @@ from produtovenda;
 
 update produtovenda set i_qtde_produtovenda = 
 null where i_produtovenda_produtovenda = 1;
+
+
+/*aula 37 */
+
+DELIMITER $$
+CREATE PROCEDURE textosparamentro()
+BEGIN
+	DECLARE x varchar(30);
+    SET x = "java is better than js";
+    SELECT x;
+
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE texto(IN curso varchar(30))
+BEGIN
+	DECLARE x varchar(30);
+    SET x = "java is better than js";
+    SELECT x, curso;
+
+
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE basico()
+BEGIN
+
+DECLARE X INT;
+SET X = 10;
+SELECT X;
+
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE procedure multi( IN num1 int)
+BEGIN
+
+DECLARE num2 int;
+SET num2 = 4;
+SELECT num2 *num1 as "multiplicar p/ 4" ;
+
+END $$
+DELIMITER ;
+
+
+CALL basico();
+CALL texto();
+call textosparamentro();
+CALL texto("precisa de um parametro");
+call multi(4);
