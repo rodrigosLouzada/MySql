@@ -713,3 +713,68 @@ DELIMITER ;
 select *,i_cliente_cliente from cliente;
 call idadeFaixaEtaria(21, @idadeCliente, @resultado);
 select @idadeCliente, @resultado;
+
+
+/* aula 39*/ 
+
+DELIMITER $$
+CREATE PROCEDURE loop1 (OUT soma INT)
+BEGIN
+
+DECLARE x int DEFAULT 0;
+
+WHILE (x < 10)DO
+	set x = x + 1;
+    
+END WHILE;
+
+SET soma = x;
+
+END $$
+DELIMITER ;
+
+call loop1(@ret);
+select @ret;
+
+
+DELIMITER $$
+CREATE PROCEDURE loop2 (IN max INT,OUT soma INT)
+BEGIN
+
+DECLARE x int DEFAULT 0;
+
+WHILE (x < max)DO
+	set x = x + 1;
+END WHILE;
+
+SET soma = x;
+
+END $$
+DELIMITER ;
+
+call loop2(10,@ret);
+select @ret;
+
+
+DELIMITER $$
+CREATE PROCEDURE loop3 (IN max INT, OUT soma INT)
+BEGIN
+DECLARE x int DEFAULT 0;
+
+meuloop: LOOP
+	IF(x >= max)THEN
+		LEAVE meuloop;
+	END IF;
+    
+    IF(x < max)THEN
+		SET x = x + 1;
+    END IF;
+END LOOP;
+
+SET soma = x;
+    
+END $$
+DELIMITER ;
+
+call loop3(100,@res);
+select @res;
