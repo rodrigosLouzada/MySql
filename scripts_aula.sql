@@ -778,3 +778,29 @@ DELIMITER ;
 
 call loop3(100,@res);
 select @res;
+
+
+/* aula 40  */
+
+DELIMITER $$
+CREATE PROCEDURE cursoR10(OUT soma float(10,2))
+begin
+DECLARE vv float (10,2) default 0;
+declare fimloop int default 0;
+
+declare meucursor CURSOR FOR SELECT f_valor_venda from venda;
+declare continue handler for not found set fimloop = 1;
+
+set soma= 0;
+
+open meucursor;
+while(fimloop != 1)do
+	fetch meucursor into vv;
+	set soma = soma + vv;
+end while;
+
+end $$
+DELIMITER ;
+
+call cursoR10(@dinho);
+select @dinho ;
