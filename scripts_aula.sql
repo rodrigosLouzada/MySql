@@ -804,3 +804,35 @@ DELIMITER ;
 
 call cursoR10(@dinho);
 select @dinho ;
+
+/*aula 42 sql injection
+seria uma forma do usuario entrar com uma query/comando pelo elemento
+e essa query seria rodada pelo sistema, sendo perigoso o usuario comum ter acesso a query e modificaçoes de tabela
+no caso, em formulario js
+
+no caso, se obtem os dados do formulario, os coloca em uma variavel em que sera utilizado na query do mysql
+, se o usuario enviar um dado que seja true, ele tem acesso a ambos!
+tanto um valor fixo ou "" or ""="" or "123" = "123"
+ou enviar após a senha ou usuario ";" e depois o uso dd drop table .... ou delete .....
+- para evitar isso, não se usa os dados diretamente na query, mas parametros, a depender da linguagem
+classe, orientação a objeto(depende da linguagem) e a função com o parametro, ou no mysql  set @exemplo = "rodrigo"
+serve para insert, update,
+
+ */
+
+
+ select * from cliente;
+
+
+select * from cliente where s_usr_cliente = '' or '''' = '''' 
+and s_senha_cliente = '' or ''''='''';
+
+select * from cliente where s_usr_cliente = '' 
+and s_senha_cliente = '';
+
+
+/*select * from cliente where s_usr_cliente ="aaa"; drop table cliente; */
+
+SET @nome = "rodrigo";
+select * from cliente where s_nome_cliente = @nome;
+SET @nome =" "" or """" = """" "; /* doesnt work */
