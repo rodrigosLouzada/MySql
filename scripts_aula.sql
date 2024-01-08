@@ -836,3 +836,27 @@ and s_senha_cliente = '';
 SET @nome = "rodrigo";
 select * from cliente where s_nome_cliente = @nome;
 SET @nome =" "" or """" = """" "; /* doesnt work */
+
+/*aula 42 */
+select s_nome_cliente from cliente where i_cliente_cliente = 1;
+select LOCATE("D", s_nome_cliente) from cliente;
+select LOCATE ("R", s_nome_cliente) as "cliente R", s_nome_cliente 
+ from cliente;
+ 
+ select substr(s_nome_cliente,3,3), s_nome_cliente from cliente;
+ select substr(s_nome_cliente,3,2), s_nome_cliente from cliente
+ where i_cliente_cliente = 1;
+ 
+ select CONCAT("Nome: ", s_nome_cliente) from cliente
+ where i_cliente_cliente = 1;
+ 
+ select concat("primeiro nome: ", s_nome_cliente, " sobrenome?" ) from cliente
+ where i_cliente_cliente = 1;
+ 
+select lower(s_nome_cliente) from cliente;
+select upper(s_nome_cliente) from cliente;
+
+ 
+ select *, FORMAT(f_valor_venda,5) as "várias casas" from venda;
+ 
+ select char_length(s_nome_cliente) as "tamanho de nome" from cliente;
